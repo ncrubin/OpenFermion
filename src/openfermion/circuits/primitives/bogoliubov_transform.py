@@ -19,7 +19,8 @@ import cirq
 
 from openfermion.linalg import (fermionic_gaussian_decomposition,
                                 givens_decomposition_square)
-from openfermion.circuits.primitives.state_preparation import slater_determinant_preparation_circuit
+from openfermion.circuits.primitives.state_preparation import \
+    slater_determinant_preparation_circuit
 from openfermion.circuits.gates import Ryxxy
 
 

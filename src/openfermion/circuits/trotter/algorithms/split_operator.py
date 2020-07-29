@@ -15,10 +15,8 @@ from typing import cast, Optional, Sequence, Tuple
 
 import cirq
 
-# import openfermion.circuits.gates as gates
 from openfermion.circuits.gates import rot11, rot111
 import openfermion.ops as ops
-# import openfermion.circuits.primitives as primitives
 from openfermion.circuits.primitives import bogoliubov_transform, swap_network
 from openfermion.circuits.trotter.trotter_algorithm import (Hamiltonian,
                                                             TrotterStep,
@@ -95,8 +93,8 @@ class SymmetricSplitOperatorTrotterStep(SplitOperatorTrotterStep):
 
         # Simulate the two-body terms for the full time
         def two_body_interaction(p, q, a, b) -> cirq.OP_TREE:
-            yield rot11(rads=-2 * self.hamiltonian.two_body[p, q] *
-                              time).on(a, b)
+            yield rot11(rads=-2 * self.hamiltonian.two_body[p, q] * time).on(
+                a, b)
 
         yield swap_network(qubits, two_body_interaction)
         # The qubit ordering has been reversed
@@ -207,8 +205,8 @@ class AsymmetricSplitOperatorTrotterStep(SplitOperatorTrotterStep):
 
         # Simulate the two-body terms for the full time
         def two_body_interaction(p, q, a, b) -> cirq.OP_TREE:
-            yield rot11(rads=-2 * self.hamiltonian.two_body[p, q] *
-                              time).on(a, b)
+            yield rot11(rads=-2 * self.hamiltonian.two_body[p, q] * time).on(
+                a, b)
 
         yield swap_network(qubits, two_body_interaction)
         # The qubit ordering has been reversed
